@@ -8,15 +8,15 @@ Multi-storage backup plugin for [Hermes Agent](https://hermes-agent.nousresearch
 # Install as a user plugin
 git clone https://github.com/ADhimirth/hermes-backup.git ~/.hermes/plugins/hermes-backup
 
-# Install dependencies
+# Install dependencies (uses uv — smart Python package manager)
 cd ~/.hermes/plugins/hermes-backup
-pip install -r requirements.txt
+uv sync
 
 # Configure
 echo 'HERMES_BACKUP_PROVIDER=s3' >> ~/.hermes/.env
 echo 'HERMES_S3_BUCKET=my-backup-bucket' >> ~/.hermes/.env
 echo 'AWS_ACCESS_KEY_ID=xxx' >> ~/.hermes/.env
-echo 'AWS_SECRET_ACCESS_KEY=xxx' >> ~/.hermes/.env
+echo 'AWS_SECRET_ACCESS_KEY=***' >> ~/.hermes/.env
 
 # Enable the plugin
 hermes plugins enable hermes-backup
@@ -63,6 +63,6 @@ Roadmap:
 ```bash
 git clone https://github.com/ADhimirth/hermes-backup.git
 cd hermes-backup
-pip install -r requirements.txt
+uv sync
 # Hack away
 ```
