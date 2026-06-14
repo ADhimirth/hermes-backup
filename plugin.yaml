@@ -1,20 +1,26 @@
 name: hermes-backup
-version: 0.1.0
-description: "Multi-storage backup plugin for Hermes Agent — backup config, state, skills, and profiles to S3, Google Drive, Dropbox, or any provider."
-author: "Amirthanathan / ADhimirth"
-license: MIT
-manifest_version: 1
-
-hooks:
-  - on_session_end
-
-requires_env:
-  - name: HERMES_BACKUP_PROVIDER
-    description: "Storage backend to use (s3, gdrive, dropbox, etc.)"
-    default: s3
-
+version: 1.0.0
+description: Multi-storage backup plugin for Hermes Agent — back up config, state, skills, and profiles to S3 (extensible to GDrive, Dropbox, etc.)
+author: rele
 provides_tools:
-  - backup_run
+  - backup_now
+  - backup_status
   - backup_list
   - backup_restore
-  - backup_status
+provides_hooks:
+  - on_session_end
+requires_env:
+  - name: HERMES_BACKUP_PROVIDER
+    description: "Backup provider (default: s3)"
+  - name: AWS_ACCESS_KEY_ID
+    description: "AWS access key for S3 backup provider"
+    url: "https://aws.amazon.com/console/"
+    secret: true
+  - name: AWS_SECRET_ACCESS_KEY
+    description: "AWS secret key for S3 backup provider"
+    url: "https://aws.amazon.com/console/"
+    secret: true
+  - name: AWS_DEFAULT_REGION
+    description: "AWS region for S3 (e.g. us-east-1)"
+  - name: HERMES_BACKUP_S3_BUCKET
+    description: "S3 bucket name for backups"

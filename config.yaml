@@ -1,15 +1,13 @@
-# hermes-backup default config
-# User overrides go in ~/.hermes/.env
+# ── hermes-backup Plugin Configuration ──────────────────────────────────
 
-provider: s3
-auto_backup: false
+provider: s3                      # Backup storage backend (s3 | gdrive | dropbox)
+enabled: true                     # Master plugin toggle
+auto_backup: false                # Auto-backup on session end
+auto_backup_scope: config         # Scope for auto-backups (smaller = faster)
+max_retention_days: 30            # Delete backups older than this (0 = keep forever)
 
-scope:
-  config: true     # config.yaml, .env, auth.json
-  state: true      # state.db
-  skills: true     # skills/
-  profiles: true   # profiles/
-  kanban: true     # kanban.db
-
-retention:
-  days: 30
+# Provider-specific settings
+provider_config:
+  bucket: ""                      # Override via HERMES_BACKUP_S3_BUCKET env
+  region: ""                      # Override via AWS_DEFAULT_REGION env
+  prefix: "hermes-backups/"       # Key prefix in the bucket
