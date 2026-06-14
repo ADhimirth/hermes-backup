@@ -1,0 +1,20 @@
+name: hermes-backup
+version: 0.1.0
+description: "Multi-storage backup plugin for Hermes Agent — backup config, state, skills, and profiles to S3, Google Drive, Dropbox, or any provider."
+author: "Amirthanathan / ADhimirth"
+license: MIT
+manifest_version: 1
+
+hooks:
+  - on_session_end
+
+requires_env:
+  - name: HERMES_BACKUP_PROVIDER
+    description: "Storage backend to use (s3, gdrive, dropbox, etc.)"
+    default: s3
+
+provides_tools:
+  - backup_run
+  - backup_list
+  - backup_restore
+  - backup_status

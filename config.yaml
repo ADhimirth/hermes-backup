@@ -1,0 +1,15 @@
+# hermes-backup default config
+# User overrides go in ~/.hermes/.env
+
+provider: s3
+auto_backup: false
+
+scope:
+  config: true     # config.yaml, .env, auth.json
+  state: true      # state.db
+  skills: true     # skills/
+  profiles: true   # profiles/
+  kanban: true     # kanban.db
+
+retention:
+  days: 30
