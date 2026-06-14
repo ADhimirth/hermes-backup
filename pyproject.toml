@@ -1,0 +1,9 @@
+[project]
+name = "hermes-backup"
+version = "0.1.0"
+description = "Multi-storage backup plugin for Hermes Agent — backup config, state, skills, and profiles to S3, Google Drive, Dropbox, or any provider."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3>=1.34.0",
+]
